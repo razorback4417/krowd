@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# from .models import Causes
+from django.conf import settings
+from .models import Cause
 
 # Create your views here.
 
@@ -20,16 +21,38 @@ def starp(request):
 
 def createProject(request):
     if request.method == "POST":
-        print("here")
+        print("In createProject() POST method.")
         name = request.POST["name"]
         email = request.POST["emailForm"]
         orgSchool = request.POST["org"]
+        problem = request.POST["prob"]
+        sol = request.POST["sol"]
         location = request.POST["location"]
         date = request.POST["date"]
-        targetAmount = request.POST["tarAmount"]
+        targetAmount = request.POST["targetAmount"]
 
-        print("here", name, email, orgSchool, location, date, targetAmount)
-        return redner(request, 'bpFund/starp.html', {
-            message: "Submitted!"
+        causeModel = Cause(
+            name=name,
+            email=email,
+            orgSchool=orgSchool,
+            problem=problem,
+            sol=sol,
+            location=location,
+            date=date,
+            targetAmount=targetAmount
+        )
+
+        causeModel.save()
+
+        causes = Cause.objects.all()
+
+        #products = Products.objects.all()
+        #userstamp = request.user
+        #user_rec = User.objects.get(username=userstamp)
+        #Tutor.objects.all().filter(active='Y').order_by('subject')
+        print("CAUSE MODEL: ", causes)
+
+        return render(request, 'bpFund/donate.html', {
+            causes: causes,
         })
     return HttpResponse("None")
