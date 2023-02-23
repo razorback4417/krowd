@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'paypal.standard.ipn', #new
 ]
 
 SOCIALACCOUNT_LOGIN_ON_GET=True
@@ -146,3 +147,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+PAYPAL_RECEIVER_EMAIL = 'sb-ask3n4380252@business.example.com'
+
+PAYPAL_TEST = True
