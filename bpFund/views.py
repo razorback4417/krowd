@@ -83,7 +83,7 @@ def product_detail(request, product_id, product_slug):
             print("Error: Bad Form")
 
     form = CartForm(request, initial={"product_id": product_id})
-    return render(request, "hsConnect/product_detail.html", {
+    return render(request, "bpFund/product_detail.html", {
         "product": product,
         "form": form,
     })
@@ -99,7 +99,7 @@ def show_cart(request):
     cart_items = cart.get_all_cart_items(request)
     print(cart_items)
     cart_subtotal = cart.subtotal(request)
-    return render(request, "hsConnect/cart.html", {
+    return render(request, "bpFund/cart.html", {
         "cart_items": cart_items,
         "cart_subtotal": cart_subtotal
     })
