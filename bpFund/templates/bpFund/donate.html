@@ -11,14 +11,26 @@
         <p>Find causes here </p>
         {% for cause in causes %}
         <div>
-            <h3>{cause.name}</h3>
-            {cause.problem}
-            End date: {cause.date}
-            Target Amount: {cause.targetAmount}
-            # of Contributors: {cause.contribNum}
+            <h3>{{cause.name}}</h3>
+            {{cause.problem}}
+            End date: {{cause.date}}
+            Target Amount: {{cause.targetAmount}}
+            # of Contributors: {{cause.contribNum}}
+            <button onclick="donateButton()">Donate Here</button>
+            <div id="buttonAction"></div>
         </div>
         {% endfor %}
     </div>
+    <script>
+    function donateButton() {
+        document.getElementById('buttonAction').innerHTML =
+        `<h1>block</h1>
+        <button onclick="closeButton()" id="closeAction">Close Modal</button>`;
+    }
+    function closeButton() {
+        document.getElementById('buttonAction').innerHTML = ``
+    }
+    </script>
 </body>
 
 </html>

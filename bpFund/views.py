@@ -11,9 +11,9 @@ def index(request):
     return render(request, "bpFund/home.html")
 
 def donate(request):
-    causes = 0 #Causes.objects.get()
+    causes = Cause.objects.all()
     return render(request, "bpFund/donate.html", {
-        causes: causes,
+        'causes': causes,
     })
 
 def starp(request):

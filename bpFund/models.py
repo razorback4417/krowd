@@ -13,4 +13,7 @@ class Cause(models.Model):
     contribNum = models.IntegerField(default=0)
 
     def __str__(self):
-        return f'{self.id} ({self.name})'
+        return f"{self.id}: name: {self.name} email: {self.email} organization/school: {self.orgSchool} problem: {self.problem} solution: {self.sol} location: {self.location} date: {self.date} targetAmount: {self.targetAmount} contributionNum: {self.contributionNum}"
+
+class User(models.Model):
+    totalContributions = models.IntegerField(default=0)
